@@ -8,34 +8,30 @@ use Illuminate\Support\Facades\Route;
 
 class StatusFilter extends Component
 {
-    public $status = 'All';
+    public $status;
     public $statusCount;
-
-    protected $queryString = [
-        'status',
-    ];
 
     public function mount()
     {
         $this->statusCount = Status::getCount();
-        
+        $this->status = request()->status ?? 'All';
+
         if (Route::currentRouteName() === 'idea.show') {
             $this->status = null;
-            $this->queryString = [];
         }
     }
 
     public function setStatus($newStatus)
     {
         $this->status = $newStatus;
+        
+        $this->dispatch('queryStringUpdatedStatus', $this->status);
 
-        // dd(Route::currentRouteName());
-
-        // if ($this->getPreviousRouteName() === 'idea.show') {
-        return redirect()->route('idea.index', [
-                'status' => $this->status,
-            ]);
-        // }
+        if ($this->getPreviousRouteName() === 'idea.show') {
+            return redirect()->route('idea.index', [
+                    'status' => $this->status,
+                ]);
+        }
     }
 
     public function render()

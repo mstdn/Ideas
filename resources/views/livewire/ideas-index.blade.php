@@ -1,12 +1,12 @@
 <div>
     <div class="filters flex flex-col md:flex-row space-y-3 md:space-y-0 md:space-x-6 pt-1">
         <div class="w-full md:w-1/3">
-            <select name="category" id="category"
+            <select wire:model.lazy="category" name="category" id="category"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <option value="Category One">Category One</option>
-                <option value="Category Two">Category Two</option>
-                <option value="Category Three">Category Three</option>
-                <option value="Category Four">Category Four</option>
+                <option value="All Categories">All Categories</option>
+                @foreach ($categories as $category)
+                    <option value="{{ $category->title }}">{{ $category->title }}</option>
+                @endforeach
             </select>
         </div>
         <div class="w-full md:w-1/3">
@@ -48,7 +48,11 @@
 
     <div class="ideas-container space-y-6 my-8">
         @foreach ($ideas as $idea)
-        <livewire:idea-index :idea="$idea" :votesCount="$idea->votes_count" />
+            <livewire:idea-index
+                :key="$idea->id"
+                :idea="$idea"
+                :votesCount="$idea->votes_count"
+            />
         @endforeach
     </div>
 
