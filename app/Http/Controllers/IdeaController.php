@@ -2,19 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Idea;
+use App\Models\Vote;
 use App\Http\Requests\StoreIdeaRequest;
 use App\Http\Requests\UpdateIdeaRequest;
-use App\Models\Idea;
 
 class IdeaController extends Controller
 {
     public function index()
     {
-        return view('ideas.index', [
-            'ideas' => Idea::with('user', 'category', 'status')
-            ->orderBy('id', 'desc')
-            ->simplePaginate(Idea::PAGINATION_COUNT),
-        ]);
+        return view('ideas.index');
     }
 
     public function create()
@@ -37,6 +34,7 @@ class IdeaController extends Controller
     {
         return view('ideas.show', [
             'idea'          =>  $idea,
+            'votesCount'    =>  $idea->votes()->count(),
         ]);
     }
 

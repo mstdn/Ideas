@@ -84,6 +84,10 @@
                     {{ $user->full_url }}
                     {{ $user->is_admin }}
 
+                    <div
+                        class="bg-purple-700 text-white text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">
+                        Test</div>
+
                 </p>
             </div>
             <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="dashboard" role="tabpanel"

@@ -22,23 +22,23 @@ return new class extends Migration
         $data =  array(
             [
                 'name'             => 'Open',
-                'class'             => 'bg-blue-700',
+                'class'             => 'bg-blue-700 text-white',
             ],
             [
                 'name'             => 'Considering',
-                'class'             => 'bg-purple-700',
+                'class'             => 'bg-purple-700 text-white',
             ],
             [
                 'name'             => 'In Progress',
-                'class'             => 'bg-yellow-400',
+                'class'             => 'bg-gray-900 text-white',
             ],
             [
                 'name'             => 'Implemented',
-                'class'             => 'bg-green-700',
+                'class'             => 'bg-green-700 text-white',
             ],
             [
                 'name'             => 'Closed',
-                'class'             => 'bg-red-700',
+                'class'             => 'bg-red-700 text-white',
             ],
             
         );
