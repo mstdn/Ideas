@@ -9,7 +9,7 @@
                 </a>
             </div>
             <div class="w-full mx-2 md:mx-4">
-                <h4 class="text-xl font-semibold mt-2 md:mt-0">
+                <h4 class="text-xl font-semibold mt-2 md:mt-0 dark:text-white">
                     {{ $idea->title }}
                 </h4>
                 <div class="text-gray-600 dark:text-gray-100 mt-3">

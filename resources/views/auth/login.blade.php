@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout :title="'Login'">
     <x-authentication-card>
 
         <x-validation-errors class="mb-4" />

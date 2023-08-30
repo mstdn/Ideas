@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout :title="'2FA'">
     <x-authentication-card>
 
         <div x-data="{ recovery: false }">

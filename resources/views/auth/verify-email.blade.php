@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout :title="'Verify Email'">
     <x-authentication-card>
 
         <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
