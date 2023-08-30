@@ -36,7 +36,7 @@
                         isVisible = false
                     }, 5000)
                 " x-show.transition.duration.1000ms="isVisible">
-            <div class="p-4 my-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
+            <div class="p-4 my-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-white"
                 role="alert">
                 <span class="font-medium">{{ session('success_message') }}</span>
             </div>

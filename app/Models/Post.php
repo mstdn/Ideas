@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Mews\Purifier\Casts\CleanHtmlInput;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Post extends Model implements HasMedia
@@ -80,9 +81,9 @@ class Post extends Model implements HasMedia
         return $this->belongsTo(Category::class);
     }
 
-    public function comments()
+    public function comments(): MorphMany
     {
-        return $this->hasMany(Comment::class);
+        return $this->morphMany(Comment::class, 'model');
     }
 
 }

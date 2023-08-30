@@ -60,6 +60,13 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+    public function isAdmin()
+    {
+        return in_array($this->username, [
+            'stux',
+        ]);
+    }
+
     public function getFullUrlAttribute()
     {
         return url('/@' . $this->username);

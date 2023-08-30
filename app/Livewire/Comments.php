@@ -32,7 +32,8 @@ class Comments extends Component
         $this->validate();
 
         Comment::create([
-            'post_id'           =>  $this->post->id,
+            'model_id'          =>  $this->post->id,
+            'model_type'        =>  Post::class,
             'user_id'           =>  Auth()->id(),
             'content'           =>  $this->comment,
         ]);

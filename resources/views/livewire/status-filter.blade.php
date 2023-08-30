@@ -1,10 +1,10 @@
-<section class="flex pb-4 flex-col md:flex-row space-y-3 md:space-y-0 md:space-x-6 bg-gray-50 dark:bg-gray-900">
+<section class="flex rounded-xl mb-4 flex-col md:flex-row space-y-3 md:space-y-0 md:space-x-6 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700">
     <div class="w-full mx-auto">
-        <div class="relative overflow-hidden bg-white shadow-md dark:bg-gray-800 md:rounded-lg">
+        <div class="relative overflow-hidden bg-white dark:bg-gray-800 md:rounded-lg">
             <div class="flex flex-col items-center justify-between p-4 space-y-3 md:flex-row md:space-y-0 md:space-x-4">
                 @auth
                 <a href="{{ route('idea.create') }}"
-                    class="flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-white rounded-lg md:w-auto text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
+                    class="flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-white rounded-lg md:w-auto text-gray-900 bg-blue-700 border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
                     <svg class="h-3.5 w-3.5 mr-2 -ml-1" fill="currentColor" viewbox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <path clip-rule="evenodd" fill-rule="evenodd"
