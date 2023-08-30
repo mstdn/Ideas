@@ -6,7 +6,7 @@
                         clicked.closest('.idea-container').querySelector('.idea-link').click()
                     }
                     "
-    class="idea-container hover:shadow-card transition duration-150 ease-in bg-white dark:bg-gray-800 rounded-xl flex cursor-pointer">
+    class="idea-container hover:shadow-card transition duration-150 ease-in bg-white dark:bg-gray-800 rounded-xl flex cursor-pointer border border-gray-200 dark:border-gray-700">
     <div class="hidden md:block border-r border-gray-200 dark:border-gray-700 px-5 py-8">
         <div class="text-center text-gray-500 dark:text-white">
             <div class="font-semibold text-2xl @if ($hasVoted) text-blue @endif">{{ $votesCount }}</div>

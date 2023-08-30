@@ -2,7 +2,7 @@
     <div class="filters flex flex-col md:flex-row space-y-3 md:space-y-0 md:space-x-6 pt-1">
         <div class="w-full md:w-1/3">
             <select wire:model.lazy="category" name="category" id="category"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option value="All Categories">All Categories</option>
                 @foreach ($categories as $category)
                     <option value="{{ $category->title }}">{{ $category->title }}</option>
@@ -10,12 +10,11 @@
             </select>
         </div>
         <div class="w-full md:w-1/3">
-            <select name="other_filters" id="other_filters"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <option value="Filter One">Filter One</option>
-                <option value="Filter Two">Filter Two</option>
-                <option value="Filter Three">Filter Three</option>
-                <option value="Filter Four">Filter Four</option>
+            <select wire:model.lazy="filter" name="other_filters" id="other_filters"
+                class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <option value="No Filter">No Filter</option>
+                <option value="Top Voted">Top Voted</option>
+                <option value="My Ideas">My Ideas</option>
             </select>
         </div>
         <div class="w-full md:w-2/3 relative">

@@ -34,7 +34,7 @@
             </li> --}}
             <li>
                 <a href="{{ route('idea.index') }}"
-                    class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group {{ request()->is('ideas*', 'ideas/*') ? 'bg-gray-100 dark:bg-gray-700' : '' }}">
+                    class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group {{ request()->is('/', 'ideas/*') ? 'bg-gray-100 dark:bg-gray-700' : '' }}">
                     <svg class="w-4 h-4 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

@@ -1,6 +1,6 @@
 <div class="idea-and-buttons container">
 
-    <div class="idea-container bg-white dark:bg-gray-800 rounded-xl flex mt-4 hover:shadow-card transition duration-150 ease-in">
+    <div class="idea-container bg-white dark:bg-gray-800 rounded-xl flex mt-4 hover:shadow-card transition duration-150 ease-in  border border-gray-200 dark:border-gray-700">
         <div class="flex flex-col md:flex-row flex-1 px-4 py-6">
             <div class="flex-none mx-2 md:mx-4">
                 <a href="#">
