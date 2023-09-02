@@ -10,10 +10,16 @@
             </div>
             <div class="w-full mx-2 md:mx-4">
                 <h4 class="text-xl font-semibold mt-2 md:mt-0 dark:text-white">
+                    @admin
+                    @if ($idea->spam_reports > 0)
+                    <div class="text-red mb-2">Spam Reports: {{ $idea->spam_reports }}</div>
+                    @endif
+                    @endadmin
                     {{ $idea->title }}
                 </h4>
                 <div class="text-gray-600 dark:text-gray-100 mt-3">
-                    {{ $idea->description }}
+                    {!! nl2br(e($idea->description)) !!}
+                    {{-- {{ $idea->description }} --}}
                 </div>
 
                 <div class="flex flex-col md:flex-row md:items-center justify-between mt-6">
@@ -28,7 +34,7 @@
                         <div class="text-gray-900 dark:text-white">3 Comments</div>
                     </div>
                     <div class="flex items-center space-x-2 mt-4 md:mt-0" x-data="{ isOpen: false }">
-
+                        @auth
                         <div class="relative">
                             <button
                                 class="relative bg-gray-100 hover:bg-gray-200 border rounded-full h-7 transition duration-150 ease-in py-2 px-3"
@@ -42,23 +48,65 @@
                             <ul class="absolute w-44 text-left font-semibold bg-white shadow-dialog rounded-xl z-10 py-3 top-8 md:top-6"
                                 x-cloak x-show.transition.origin.top.left="isOpen" @click.away="isOpen = false"
                                 @keydown.escape.window="isOpen = false">
+                                @can('update', $idea)
                                 <li>
-                                    <a href="#" @click="
+                                    {{-- <a href="#" @click.prevent="
                                             isOpen = false
                                             $dispatch('custom-show-edit-modal')
                                         " class="hover:bg-gray-100 block transition duration-150 ease-in px-5 py-3">
                                         Edit Idea
+                                    </a> --}}
+
+                                    <a href="{{ route('idea.edit', $idea) }}"
+                                        class="hover:bg-gray-100 block transition duration-150 ease-in px-5 py-3">
+                                        Edit Idea
                                     </a>
                                 </li>
-                                <li><a href="#"
-                                        class="hover:bg-gray-100 block transition duration-150 ease-in px-5 py-3">Delete
-                                        Idea</a></li>
-                                <li><a href="#"
+                                @endcan
+                                @can('delete', $idea)
+                                <li>
+                                    <a href="#" @click.prevent="
+                                            isOpen = false
+                                            $dispatch('custom-show-delete-modal')
+                                        " class="hover:bg-gray-100 block transition duration-150 ease-in px-5 py-3">
+                                        Delete Idea
+                                    </a>
+                                    {{-- <button type="button" data-modal-target="delete-popup-modal"
+                                        data-modal-toggle="delete-popup-modal"
+                                        class="hover:bg-gray-100 block transition duration-150 ease-in px-5 py-3">
+                                        Delete
+                                    </button> --}}
+                                </li>
+                                @endcan
+                                {{-- <li><a href="#"
                                         class="hover:bg-gray-100 block transition duration-150 ease-in px-5 py-3">Mark
-                                        as Spam</a></li>
+                                        as Spam</a></li> --}}
+                                <li>
+                                    <a href="#" @click.prevent="
+                                                    isOpen = false
+                                                    $dispatch('custom-show-mark-idea-as-spam-modal')
+                                                "
+                                        class="hover:bg-gray-100 block transition duration-150 ease-in px-5 py-3">
+                                        Mark as Spam
+                                    </a>
+                                </li>
+
+                                @admin
+                                @if ($idea->spam_reports > 0)
+                                <li>
+                                    <a href="#" @click.prevent="
+                                                        isOpen = false
+                                                        $dispatch('custom-show-mark-idea-as-not-spam-modal')
+                                                    "
+                                        class="hover:bg-gray-100 block transition duration-150 ease-in px-5 py-3">
+                                        Not Spam
+                                    </a>
+                                </li>
+                                @endif
+                                @endadmin
                             </ul>
                         </div>
-                        
+                        @endauth
                         <div
                             class="{{ $idea->status->classes }} text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">
                             {{ $idea->status->name }}
@@ -125,11 +173,9 @@
                     </form>
                 </div>
             </div>
-            @auth
-            @if (auth()->user()->isAdmin())
+            @admin
             <livewire:set-status :idea="$idea" />
-            @endif
-            @endauth
+            @endadmin
         </div>
 
         <div class="hidden md:flex items-center space-x-3">

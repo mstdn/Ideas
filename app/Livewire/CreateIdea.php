@@ -19,7 +19,7 @@ class CreateIdea extends Component
 
     protected $rules = [
         'title' => 'required|min:4',
-        'category' => 'required|integer',
+        'category' => 'required|integer|exists:categories,id',
         'description' => 'required|min:4',
     ];
 
@@ -36,7 +36,9 @@ class CreateIdea extends Component
                 'description' => $this->description,
             ]);
 
-            session()->flash('success_message', 'Idea was added successfully.');
+            // session()->flash('success_message', 'Idea was added successfully.');
+
+            session()->flash('success_message', 'Idea was added successfully!');
 
             $this->reset();
 

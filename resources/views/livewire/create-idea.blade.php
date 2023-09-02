@@ -35,7 +35,7 @@
                     @error('description') <span class="error">{{ $message }}</span> @enderror
                 </div>
             </div>
-            <div class="sm:col-span-2">
+            {{-- <div class="sm:col-span-2">
                 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     for="images">
                     Upload images (optional)
@@ -50,9 +50,6 @@
                         class="w-full px-3 py-1 text-xs font-medium leading-none text-center text-blue-800 bg-blue-200 rounded-full animate-pulse dark:bg-blue-900 dark:text-blue-200">
                         Uploading...</div>
                 </div>
-
-
-                {{-- <div wire:loading wire:target="images">Uploading...</div> --}}
                 <div>@error('images')<p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
                             class="font-medium">Oops!</span> {{ $message }}</p>@enderror</div>
             </div>
@@ -75,10 +72,9 @@
                     </div>
                     @endforeach
                     @endif
-                    {{-- <img src="{{ $image->temporaryUrl() }}" alt=""> --}}
                     @endif
                     @endif
-            </div>
+            </div> --}}
         </div>
         <button type="submit"
             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">

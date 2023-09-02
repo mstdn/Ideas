@@ -5,7 +5,7 @@
                 class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option value="All Categories">All Categories</option>
                 @foreach ($categories as $category)
-                    <option value="{{ $category->title }}">{{ $category->title }}</option>
+                <option value="{{ $category->title }}">{{ $category->title }}</option>
                 @endforeach
             </select>
         </div>
@@ -15,6 +15,9 @@
                 <option value="No Filter">No Filter</option>
                 <option value="Top Voted">Top Voted</option>
                 <option value="My Ideas">My Ideas</option>
+                @admin
+                <option value="Spam Ideas">Spam Ideas</option>
+                @endadmin
             </select>
         </div>
         <div class="w-full md:w-2/3 relative">
@@ -47,16 +50,13 @@
 
     <div class="ideas-container space-y-6 my-8">
         @forelse ($ideas as $idea)
-            <livewire:idea-index
-                :key="$idea->id"
-                :idea="$idea"
-                :votesCount="$idea->votes_count"
-            />
+        <livewire:idea-index :key="$idea->id" :idea="$idea" :votesCount="$idea->votes_count" />
         @empty
-            <div class="mx-auto w-70 mt-12">
-                {{-- <img src="{{ asset('img/no-ideas.svg') }}" alt="No Ideas" class="mx-auto" style="mix-blend-mode: luminosity"> --}}
-                <div class="text-gray-400 text-center font-bold mt-6">No ideas were found...</div>
-            </div>
+        <div class="mx-auto w-70 mt-12">
+            {{-- <img src="{{ asset('img/no-ideas.svg') }}" alt="No Ideas" class="mx-auto"
+                style="mix-blend-mode: luminosity"> --}}
+            <div class="text-gray-400 text-center font-bold mt-6">No ideas were found...</div>
+        </div>
         @endforelse
     </div>
 

@@ -46,7 +46,9 @@ class IdeaController extends Controller
      */
     public function edit(Idea $idea)
     {
-        //
+        return view('ideas.edit', [
+            'idea'              =>  $idea
+        ]);
     }
 
     /**

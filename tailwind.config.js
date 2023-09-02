@@ -20,6 +20,10 @@ export default {
                 current: "currentColor",
                 red: colors.red,
                 'green' : '#1aab8b',
+                'red-100' : '#fee2e2',
+                gray: {
+                    300: '#d1d5db'
+                },
                 // yellow: colors.amber,
                 // black: colors.black,
                 // white: colors.white,

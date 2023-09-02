@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Mews\Purifier\Casts\CleanHtml;
 use Illuminate\Database\Eloquent\Model;
 use App\Exceptions\VoteNotFoundException;
 use App\Exceptions\DuplicateVoteException;
@@ -11,6 +12,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Idea extends Model
 {
     use HasFactory, Sluggable;
+
+    protected $casts = [
+        'description'        => CleanHtml::class,
+    ];
 
     const PAGINATION_COUNT = 10;
 

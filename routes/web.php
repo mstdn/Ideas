@@ -23,7 +23,7 @@ Route::get('/@{user:username}', [UserController::class, 'show'])->name('users.sh
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
     Route::get('/publish', [PostController::class, 'create'])->name('posts.create');
     Route::get('/create', [IdeaController::class, 'create'])->name('idea.create');
-
+    Route::get('/ideas/{idea:slug}/edit', [IdeaController::class, 'edit'])->name('idea.edit');
     Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('/categories/create', [CategoryController::class, 'create'])->name('admin.categories.create');
     });

@@ -7,6 +7,7 @@ use App\Models\Vote;
 use App\Models\Status;
 use Livewire\Component;
 use App\Models\Category;
+use Livewire\Attributes\On;
 use Livewire\WithPagination;
 
 class IdeasIndex extends Component
@@ -23,6 +24,8 @@ class IdeasIndex extends Component
         'category',
         'filter',
     ];
+    
+    // #[On('queryStringUpdatedStatus')] 
 
     protected $listeners = ['queryStringUpdatedStatus'];
 
@@ -76,6 +79,8 @@ class IdeasIndex extends Component
                     return $query->orderByDesc('votes_count');
                 })->when($this->filter && $this->filter === 'My Ideas', function ($query) {
                     return $query->where('user_id', auth()->id());
+                })->when($this->filter && $this->filter === 'Spam Ideas', function ($query) {
+                    return $query->where('spam_reports', '>', 0)->orderByDesc('spam_reports');
                 })->when(strlen($this->search) >= 3, function ($query) {
                     return $query->where('title', 'like', '%'.$this->search.'%');
                 })
