@@ -33,7 +33,7 @@ class SetStatus extends Component
             $this->notifyAllVoters();
         }
 
-        $this->dispatch('statusWasUpdated');
+        $this->dispatch('statusWasUpdated', 'Status has been updated.');
     }
 
     public function notifyAllVoters()
@@ -47,7 +47,7 @@ class SetStatus extends Component
                 }
             });
     }
-    
+
     public function render()
     {
         return view('livewire.set-status');
