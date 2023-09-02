@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Mews\Purifier\Casts\CleanHtml;
 use Illuminate\Database\Eloquent\Model;
 use App\Exceptions\VoteNotFoundException;
@@ -20,7 +21,7 @@ class Idea extends Model
     const PAGINATION_COUNT = 10;
 
     protected $guarded = [];
-    protected $with = [];
+    protected $with = ['comments'];
 
     public function sluggable(): array
     {
@@ -82,8 +83,13 @@ class Idea extends Model
         return $this->belongsTo(Status::class);
     }
 
-    public function votes()
+    public function votes(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->belongsToMany(User::class, 'votes');
+    }
+
+    public function comments(): MorphMany
+    {
+        return $this->morphMany(Comment::class, 'model');
     }
 }

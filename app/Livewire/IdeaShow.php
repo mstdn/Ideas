@@ -6,7 +6,7 @@ use App\Models\Idea;
 use Livewire\Component;
 use App\Exceptions\VoteNotFoundException;
 use App\Exceptions\DuplicateVoteException;
-use Livewire\Attributes\On; 
+use Livewire\Attributes\On;
 
 class IdeaShow extends Component
 {
@@ -14,11 +14,15 @@ class IdeaShow extends Component
     public $votesCount;
     public $hasVoted;
 
-    // #[On('statusWasUpdated', 'ideaWasUpdated')]
+    protected $listeners = [
+        'statusWasUpdated',
+        'ideaWasUpdated',
+        'ideaWasMarkedAsSpam',
+        'ideaWasMarkedAsNotSpam',
+        'commentWasAdded'
+    ];
 
-    protected $listeners = ['statusWasUpdated', 'ideaWasUpdated', 'ideaWasMarkedAsSpam', 'ideaWasMarkedAsNotSpam'];
-
-    public function mount(Idea $idea, $votesCount)
+    public function mount(Idea $idea, $votesCount): void
     {
         $this->idea = $idea;
         $this->votesCount = $votesCount;
@@ -26,6 +30,11 @@ class IdeaShow extends Component
     }
 
     public function statusWasUpdated()
+    {
+        $this->idea->refresh();
+    }
+
+    public function commentWasAdded()
     {
         $this->idea->refresh();
     }

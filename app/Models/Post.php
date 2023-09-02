@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\MediaLibrary\HasMedia;
 use Mews\Purifier\Casts\CleanHtml;
 use Illuminate\Database\Eloquent\Model;
@@ -71,12 +72,12 @@ class Post extends Model implements HasMedia
         return url('posts/' . $this->slug);
     }
 
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function category()
+    public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
