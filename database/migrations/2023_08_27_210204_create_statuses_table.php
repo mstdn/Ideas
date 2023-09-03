@@ -34,13 +34,13 @@ return new class extends Migration
             ],
             [
                 'name'             => 'Implemented',
-                'class'             => 'bg-green-700 text-white',
+                'class'             => 'bg-green-600 text-white',
             ],
             [
                 'name'             => 'Closed',
                 'class'             => 'bg-red-700 text-white',
             ],
-            
+
         );
         foreach ($data as $datum) {
             $category = new Status();

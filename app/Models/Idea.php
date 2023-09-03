@@ -18,7 +18,8 @@ class Idea extends Model
         'description'        => CleanHtml::class,
     ];
 
-    const PAGINATION_COUNT = 10;
+    // const PAGINATION_COUNT = 10;
+    protected $perPage = 10;
 
     protected $guarded = [];
     protected $with = ['comments'];

@@ -45,11 +45,10 @@
                     </div>
                 </div>
             </div> <!-- end comment-container --> --}}
-
+                {{ $comments->onEachSide(1)->links() }}
         </div>
     @else
         <div class="mx-auto w-70 mt-12">
-
             <div class="text-gray-400 text-center font-bold mt-6">No comments yet...</div>
         </div>
     @endif

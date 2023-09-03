@@ -17,6 +17,8 @@ class Comment extends Model
         'content'            => CleanHtml::class,
     ];
 
+    protected $perPage = 20;
+
     public function user()
     {
         return $this->belongsTo(User::class);
